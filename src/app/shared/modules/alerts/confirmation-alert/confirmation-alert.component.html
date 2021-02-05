@@ -1,0 +1,11 @@
+<mat-dialog-content>
+    {{alertText}}
+</mat-dialog-content>
+<mat-dialog-actions class="pull-right" *ngIf="!isDelete">
+        <button mat-raised-button (click)="closeDialog(true)">yes</button>
+        <button mat-raised-button (click)="closeDialog(false)">no</button>  
+</mat-dialog-actions>
+<mat-dialog-actions class="pull-right" *ngIf="isDelete">
+    <button mat-raised-button *ngIf="isDelete" color='warn' (click)="closeDialog(true)">Delete</button>
+    <button mat-raised-button (click)="closeDialog(false)">Cancel</button>  
+</mat-dialog-actions>

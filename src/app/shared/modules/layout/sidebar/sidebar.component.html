@@ -1,0 +1,50 @@
+<!-- <mat-toolbar color="primary">
+  <button
+    type="button"
+    aria-label="Toggle sidenav"
+    mat-icon-button
+    (click)="drawer.toggle()">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+  <span>StarAssist</span>
+</mat-toolbar> -->
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" 
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="showSidebar"
+      >
+    
+    <mat-nav-list>
+      <a mat-list-item routerLink="/dashboard" [routerLinkActive]="['is-link-active']">
+        <mat-icon>dashboard</mat-icon> 
+        &nbsp;Dashboard
+      </a>
+      <a mat-list-item routerLink="/customers" [routerLinkActive]="['is-link-active']">
+        <mat-icon>contacts</mat-icon>
+        &nbsp;Customers
+      </a>
+      <a mat-list-item routerLink="/releaseOrder" [routerLinkActive]="['is-link-active']">
+        <mat-icon>description</mat-icon>
+        &nbsp;Release Orders
+      </a>
+      <a mat-list-item routerLink="/bills" [routerLinkActive]="['is-link-active']">
+        <mat-icon>monetization_on</mat-icon>
+        &nbsp;Bills
+      </a>
+      <a mat-list-item routerLink="/publications" [routerLinkActive]="['is-link-active']">
+        <mat-icon>local_library</mat-icon>
+        &nbsp;Publications
+      </a>
+      <!-- <a mat-list-item routerLink="/outstanding" [routerLinkActive]="['is-link-active']">
+        <mat-icon>assessment</mat-icon>
+        &nbsp;Outstanding
+      </a> -->
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
+    <ng-content></ng-content>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

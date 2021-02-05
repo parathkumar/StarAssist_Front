@@ -1,0 +1,96 @@
+<div mat-dialog-title style="display: flex; justify-content:space-between" class="dialog-header">
+    <h1>{{modalType}} Customer</h1>
+    <button mat-icon-button [mat-dialog-close]="" color="warn">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+<div mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+        <div class="form-wrapper">
+            <div class="grid-container">
+                <div class="grid-item">
+                    <mat-form-field>
+                        <mat-label>Name</mat-label>
+                        <input cdkFocusInitial matInput formControlName="name">
+                    </mat-form-field>
+                </div>
+
+                <div class="grid-item">
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input cdkFocusInitial matInput formControlName="email">
+                    </mat-form-field>
+                </div>
+
+                <div class="grid-item">
+                    <mat-form-field>
+                        <mat-label>Buisness Occupation</mat-label>
+                        <input matInput formControlName="businessOccupation">
+                    </mat-form-field>
+                </div>
+
+                <div class="grid-item">
+                    <mat-form-field>
+                        <mat-label>Place of Supply</mat-label>
+                        <input matInput formControlName="businessLandmark">
+                    </mat-form-field>
+                </div>
+
+                <div class="grid-item">
+                    <mat-form-field>
+                        <mat-label>SPOC</mat-label>
+                        <input matInput formControlName="singlePointOfContact">
+                    </mat-form-field>
+                </div>
+
+                <div class="grid-item">
+                    <mat-form-field>
+                        <mat-label>Pan Number</mat-label>
+                        <input matInput formControlName="panNumber">
+                    </mat-form-field>
+                </div>
+
+                <div class="grid-item">
+                    <mat-form-field>
+                        <mat-label>GST</mat-label>
+                        <input matInput formControlName="gst">
+                    </mat-form-field>
+                </div>
+
+                <div class="grid-item">
+                    <mat-form-field>
+                        <mat-label>Terms</mat-label>
+                        <input matInput formControlName="terms">
+                    </mat-form-field>
+                </div>
+
+                <div class="grid-item">
+                    <mat-form-field>
+                        <mat-label>Phone Number</mat-label>
+                        <input matInput formControlName="phoneNumbers">
+                    </mat-form-field>
+                </div>
+                <div class="grid-item">
+                    <mat-form-field>
+                        <mat-label>Representative</mat-label>
+                        <input matInput formControlName="representatives">
+                    </mat-form-field>
+                </div>
+
+                <div class="grid-item">
+                    <mat-form-field>
+                        <mat-label>Address</mat-label>
+                        <textarea matInput formControlName="addresses"></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+
+
+            <div class="form-buttons">
+                <button mat-raised-button type="submit" [disabled]="!form.valid" color="primary"
+                    style="margin-left: 10px;">Submit</button>
+                <button mat-button color="warn" type="reset">Reset</button>
+            </div>
+        </div>
+    </form>
+</div>

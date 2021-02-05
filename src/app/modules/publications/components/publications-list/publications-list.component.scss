@@ -1,0 +1,16 @@
+.card-style{
+    max-width: 250px;
+}
+
+.cards-alignment{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y:auto; 
+    position:relative;
+    height: 400px;
+}
+
+.card-list-styling{
+    list-style: none;
+}

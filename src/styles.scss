@@ -1,1 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
+// @import '~bootstrap/dist/css/bootstrap.min.css';
+@import './assets/style-variables.scss';
+html, body { height: 100%; }
+body { 
+    margin: 0px; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    
+ }
+.section-heading {
+    font-family: "Helvetica"!important;
+    font-weight: 500!important;
+}
+.section-container{
+    background-color: #f7f7f7!important;
+    //height: 90%;
+    min-height: 90%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 1%;   
+}
+.section-top{
+    flex: 1 1 auto;
+}
+.section-body{
+    padding-top:0.5%;
+    padding-left: 1.5%;
+    padding-right: 1.5%;
+    padding-bottom: 0.5%;
+}
+.content{
+    background-color: $theme-light-blue;
+    padding: 1%!important;    
+  }
+  .mat-header-cell {
+    text-align: center;
+    justify-content: center;
+    background-color: $theme-light-blue;
+    color: white;
+    font-size: small;
+    font-weight: bold;
+  }
+  
+  .Actions {
+    text-align: center;
+    justify-content:center;
+  }
+  .tabs-with-button{
+    display: flex;
+    flex-direction: row;
+  }
+  body{
+    background-color: $theme-light-blue;
+  }

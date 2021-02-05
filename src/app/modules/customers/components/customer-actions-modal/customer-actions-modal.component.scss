@@ -1,0 +1,19 @@
+.grid-container{
+    display: grid;
+    // grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+}
+.grid-item>mat-form-field{
+        width:80%;
+}
+
+.form-wrapper{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.form-buttons{
+    display: flex;
+    flex-direction: row-reverse;
+    align-self: flex-end;
+}

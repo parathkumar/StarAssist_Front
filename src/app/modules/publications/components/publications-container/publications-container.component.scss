@@ -1,0 +1,27 @@
+.flex-test{
+    display: flex;
+    height:40px;
+    justify-content:space-between;
+}
+
+.table-fit{
+
+    table-layout: fixed;
+    width:100%;
+}
+.table-container{
+    margin-top: 10px;
+    max-height: 500px;
+    overflow: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+td , th {
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 200px;
+}
+.button-with-title{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

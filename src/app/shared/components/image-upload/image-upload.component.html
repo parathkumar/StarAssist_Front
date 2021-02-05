@@ -1,0 +1,14 @@
+<div [ngStyle]="setBorderStyles()">
+    <div>
+        <label class="uploader" ondragover="return false;" [class.loaded]="loaded"
+            (dragenter)="handleDragEnter()"
+            (dragleave)="handleDragLeave()" (drop)="handleDrop($event)">
+            <img [src]="imageSrc" (load)="handleImageLoad()" [class.loaded]="imageLoaded" [height]="height" [width]="width"/>
+        </label>
+        <button class="focusOut" type="button" mat-button (click)="onClick('fileUpload' + id)">
+            <mat-icon>publish</mat-icon>
+            <br>{{text}}
+        </button>
+        <input [id]="'fileUpload' + id" [hidden] = "true" type="file" name="file" accept="image/*" (change)="handleInputChange($event)">
+    </div>
+</div>
