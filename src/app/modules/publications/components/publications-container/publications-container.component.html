@@ -5,6 +5,10 @@
                 <h1 class="section-heading">Publications & Regions</h1>
             </div>
             <div>
+                <button mat-raised-button color="primary" style ="margin-right: 2px;" (click)="openAddModal()">
+                    <mat-icon>place</mat-icon>
+                    Region
+                </button>
                 <button mat-raised-button color="primary" (click)="openAddModal()">
                     <mat-icon>add</mat-icon>
                     Add {{selectedTab}}

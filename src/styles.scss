@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 // @import '~bootstrap/dist/css/bootstrap.min.css';
 @import './assets/style-variables.scss';
-html, body { height: 100%; }
+html, body { height: 100%;}
 body { 
     margin: 0px; 
     font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -13,8 +13,7 @@ body {
 }
 .section-container{
     background-color: #f7f7f7!important;
-    //height: 90%;
-    min-height: 90%;
+    min-height: calc(100vh - 125px);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding: 1%;   
 }

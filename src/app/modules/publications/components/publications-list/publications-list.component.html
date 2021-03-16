@@ -1,10 +1,12 @@
-<div class="cards-alignment">
-    <ul class="card-list-styling" *ngFor="let publication of publications">
-        <li>
-            <mat-card class="card-style">
-                <img mat-card-image src={{publication.publicationLogo}} alt="Logo of Publication">
-                {{publication.publicationName}}
-            </mat-card>
-        </li>
-    </ul>
+<div class="wrapper">
+    <div class="cards-alignment scroll">
+        <ul class="card-list-styling" *ngFor="let publication of publications">
+            <li>
+                <mat-card class="card-style">
+                    <img mat-card-image src={{publication.publicationLogo}} alt="Logo of Publication">
+                    {{publication.publicationName}}
+                </mat-card>
+            </li>
+        </ul>
+    </div>
 </div>

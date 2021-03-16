@@ -66,12 +66,10 @@ export class ImageUploadComponent implements OnInit {
             }
       }
       handleDragEnter() {
-            console.log("handleDragEnter")
             this.dragging = true;
       }
 
       handleDragLeave() {
-            console.log("handleDragLeave")
             this.dragging = false;
       }
 
@@ -91,7 +89,6 @@ export class ImageUploadComponent implements OnInit {
       }
 
       handleInputChange(e) {
-            console.log("input change")
             var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
 
             var pattern = /image-*/;
@@ -108,7 +105,6 @@ export class ImageUploadComponent implements OnInit {
       }
 
       _handleReaderLoaded(e) {
-            console.log("_handleReaderLoaded")
             var reader = e.target;
             this.imageSrc = this.sanitizer.bypassSecurityTrustResourceUrl(reader.result);
             this.fileUploadModel.base64 = reader.result;

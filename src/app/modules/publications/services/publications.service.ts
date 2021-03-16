@@ -13,4 +13,7 @@ export class PublicationsService {
   getPublicationsList():Observable<IApiResponse>{
     return this.apiService.getData(publicationUrls.readPublicationList);
   }
+  createPublication(publicationObject):Observable<IApiResponse>{
+    return this.apiService.postData(publicationUrls.createPublication,publicationObject);
+  }
 }

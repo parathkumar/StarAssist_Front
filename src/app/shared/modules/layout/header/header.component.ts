@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LayoutService } from '../services/layout.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { LayoutService } from '../services/layout.service';
 })
 export class HeaderComponent implements OnInit {
   toggleSidebarValue:boolean = false;
-  constructor(private layoutService:LayoutService) { 
+  constructor(private layoutService:LayoutService,private _router:Router) { 
     
   }
 
@@ -17,5 +18,10 @@ export class HeaderComponent implements OnInit {
   toggleSidebar(){
     this.toggleSidebarValue = !this.toggleSidebarValue;
     this.layoutService.toggleSidebar.emit(this.toggleSidebarValue);
+  }
+
+  logout(){
+    localStorage.removeItem("jwt");
+    this._router.navigateByUrl("/auth/login")
   }
 }

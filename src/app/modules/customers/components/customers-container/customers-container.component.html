@@ -8,7 +8,7 @@
         <mat-label>Search Customers</mat-label>
         <input matInput (keyup)="applyFilter($event)">
       </mat-form-field>
-      <button mat-mini-fab color="primary" type="button" matTooltip="new customer" (click)='onAddCustomer()'>
+      <button mat-mini-fab color="primary" type="button" matTooltip="New customer" (click)='onAddCustomer()'>
         <mat-icon>add</mat-icon>
       </button>
     </form>
@@ -38,10 +38,10 @@
         <ng-container matColumnDef="Actions">
           <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Actions </th>
           <td mat-cell *matCellDef="let element" style="justify-content: center;" class="Actions">
-            <button mat-button href="#" aria-label="edit" matTooltip="edit details" (click)="onEditCustomer(element)">
+            <button mat-button href="#" aria-label="edit" matTooltip="Edit details" (click)="onEditCustomer(element)">
               <mat-icon color="primary">edit</mat-icon>
             </button>
-            <button mat-button href="#" aria-label="delete" matTooltip="delete customer" (click)="onDelete(element)">
+            <button mat-button href="#" aria-label="delete" matTooltip="Delete customer" (click)="onDelete(element)">
               <mat-icon color="warn">delete</mat-icon>
             </button>
           </td>

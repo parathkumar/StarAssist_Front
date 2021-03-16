@@ -14,11 +14,12 @@ import { HeaderComponent } from './shared/modules/layout/header/header.component
 import { FooterComponent } from './shared/modules/layout/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-//import { MatDialogModule } from '@angular/material/dialog';
 import { SharedImportsModule } from 'src/app/shared/modules/shared-imports/shared-imports.module';
 import { ConfirmationAlertComponent } from './shared/modules/alerts/confirmation-alert/confirmation-alert.component';
 import { SuccessAlertComponent } from './shared/modules/alerts/success-alert/success-alert.component';
-import { ImageUploadComponent } from './shared/components/image-upload/image-upload.component';
+import { ErrorAlertComponent } from './shared/modules/alerts/error-alert/error-alert.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { AuthGuard } from './core/auth/guards/auth.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,7 @@ import { ImageUploadComponent } from './shared/components/image-upload/image-upl
     FooterComponent,
     ConfirmationAlertComponent,
     SuccessAlertComponent,
-    //ImageUploadComponent,
+    ErrorAlertComponent,
   ],
   imports: [
     FormsModule,
@@ -36,19 +37,25 @@ import { ImageUploadComponent } from './shared/components/image-upload/image-upl
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    LayoutModule,
-    
+    LayoutModule,    
     MatToolbarModule,
-   // MatButtonModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,
     HttpClientModule,
     SharedImportsModule,
-    
-    //MatDialogModule
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["localhost:44395"],
+        disallowedRoutes: [],
+      },
+    }),
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
+export function tokenGetter() {
+  return localStorage.getItem("jwt");
+}

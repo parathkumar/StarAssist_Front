@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ImageUploadComponent } from './image-upload.component';
+import { LogoutComponent } from './logout.component';
 
-describe('ImageUploadComponent', () => {
-  let component: ImageUploadComponent;
-  let fixture: ComponentFixture<ImageUploadComponent>;
+describe('LogoutComponent', () => {
+  let component: LogoutComponent;
+  let fixture: ComponentFixture<LogoutComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImageUploadComponent ]
+      declarations: [ LogoutComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ImageUploadComponent);
+    fixture = TestBed.createComponent(LogoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
