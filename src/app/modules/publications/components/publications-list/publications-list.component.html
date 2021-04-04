@@ -4,7 +4,17 @@
             <li>
                 <mat-card class="card-style">
                     <img mat-card-image src={{publication.publicationLogo}} alt="Logo of Publication">
-                    {{publication.publicationName}}
+                    <mat-card-content>
+                        {{publication.publicationName}}
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-icon-button aria-label="edit" matTooltip="Edit">
+                            <mat-icon color="primary">edit</mat-icon>
+                        </button>
+                        <button mat-icon-button aria-label="delete" matTooltip="Delete">
+                            <mat-icon color="warn">delete</mat-icon>
+                        </button>
+                    </mat-card-actions>
                 </mat-card>
             </li>
         </ul>

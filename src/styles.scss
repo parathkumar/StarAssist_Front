@@ -50,3 +50,14 @@ body {
   body{
     background-color: $theme-light-blue;
   }
+  div::-webkit-scrollbar {
+    width: 5px;
+  }
+
+div::-webkit-scrollbar-track {
+    background: #ddd;
+  }
+   
+div::-webkit-scrollbar-thumb {
+    background: #666; 
+  }

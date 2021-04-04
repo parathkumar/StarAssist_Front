@@ -1,0 +1,11 @@
+<mat-dialog-content>
+    <form [formGroup]="form">
+        <mat-form-field appearance="outline">
+            <mat-label>{{modalType}} Region</mat-label>
+            <input matInput autocomplete="off" formControlName="RegionName"/>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button [mat-dialog-close]="form.value">Save</button>
+</mat-dialog-actions>

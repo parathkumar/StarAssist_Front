@@ -2,30 +2,31 @@
     <div class="section-top">
         <div class="button-with-title">
             <div>
-                <h1 class="section-heading">Publications & Regions</h1>
+                <h1 class="section-heading">Publications</h1>
             </div>
             <div>
-                <button mat-raised-button color="primary" style ="margin-right: 2px;" (click)="openAddModal()">
+                <button mat-raised-button color="primary" style ="margin-right: 2px;" (click)="openRegionModal()">
                     <mat-icon>place</mat-icon>
-                    Region
+                    Regions
                 </button>
-                <button mat-raised-button color="primary" (click)="openAddModal()">
+                <button mat-raised-button color="primary" (click)="openAddPublicationsModal()">
                     <mat-icon>add</mat-icon>
-                    Add {{selectedTab}}
+                    Add Publications
                 </button>
             </div>
         </div>
     </div>
     <div class="section-body">
             <div>
-                <mat-tab-group mat-align-tabs="start" (selectedTabChange)="setAddButton()" #tabGroup>
+                <!-- <mat-tab-group mat-align-tabs="start" (selectedTabChange)="setAddButton()" #tabGroup>
                     <mat-tab label="Publications">
                             <app-publications-list></app-publications-list>   
                     </mat-tab>
                     <mat-tab label="Regions">
                         <app-regions-list></app-regions-list>
                     </mat-tab>                    
-                  </mat-tab-group>
+                  </mat-tab-group> -->
+                  <app-publications-list></app-publications-list>
             </div>            
               
         

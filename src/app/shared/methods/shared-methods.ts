@@ -29,4 +29,12 @@ export class customMethods {
     })
     return finalObj;
   }
+  /** Returns true if input is empty
+  * @param {any} object - the object that has array as field
+  * @param {any} fields - key value pair of field in object and fieldname in array.
+  */
+  public static isEmpty(object) {
+    return [null,undefined,''].some((rec)=>rec==object)
+  }
+
 }
