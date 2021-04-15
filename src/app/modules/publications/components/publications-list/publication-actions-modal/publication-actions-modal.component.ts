@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ImageUploadComponent } from 'src/app/shared/components/image-upload/image-upload.component';
+import { actionConstants } from 'src/app/shared/constants/common-constants';
 import { IApiResponse } from 'src/app/shared/Interfaces/IApiResponse';
 import { ErrorAlertComponent } from 'src/app/shared/modules/alerts/error-alert/error-alert.component';
 import { SuccessAlertComponent } from 'src/app/shared/modules/alerts/success-alert/success-alert.component';
-import { IPublicationCreation, IuploadedImage } from '../../../interfaces/publicationModels';
+import { IPublication, IPublicationCreation, IuploadedImage } from '../../../interfaces/publicationModels';
 import { PublicationsService } from '../../../services/publications.service';
 
 @Component({
@@ -13,9 +15,13 @@ import { PublicationsService } from '../../../services/publications.service';
   styleUrls: ['./publication-actions-modal.component.scss']
 })
 export class PublicationActionsModalComponent implements OnInit {
+modalType:string;
+data:IPublication=null;
+  constructor(private formBuilder : FormBuilder,@Inject(MAT_DIALOG_DATA) data,private publicationsService:PublicationsService,private dialog:MatDialog,private publicationsActionModalRef:MatDialogRef<PublicationActionsModalComponent>) { 
+    this.modalType=data.type;
+    this.data=data.data;
+  }
 
-  constructor(private formBuilder : FormBuilder,private publicationsService:PublicationsService,private dialog:MatDialog,private publicationsActionModalRef:MatDialogRef<PublicationActionsModalComponent>) { }
-  modalType:string = "Add";
   form:FormGroup;
   uploadedImage:IuploadedImage;
   ngOnInit(): void {
@@ -23,16 +29,27 @@ export class PublicationActionsModalComponent implements OnInit {
   }
   setupForm(){
     this.form = this.formBuilder.group({
-      name : ['',Validators.required]
+      name : [this.data.publicationName,Validators.required]
     })
   }
   onImageUpload(event:IuploadedImage){
     this.uploadedImage = event;
   }
   onSubmit(formData){
+  if(this.modalType==actionConstants.create)
+  {
+    this.createPublication(formData);
+  }
+  else{
+    this.editPublication(formData);
+  }
+    
+  }
+  createPublication(Publicationobj)
+  {
     let apiResult:IApiResponse;
     let postObject = {
-      PublicationName:formData.name,
+      PublicationName:Publicationobj.name,
       PublicationLogo:this.uploadedImage.base64
     }
     console.log('final',postObject)
@@ -68,6 +85,29 @@ export class PublicationActionsModalComponent implements OnInit {
         })
       }
     })
-    
+  }
+  editPublication(Publicationobj)
+  {
+    let postObject= {
+      PublicationId: this.data.publicationId,
+      PublicationName: Publicationobj.name,
+      PublicationLogo:(this.uploadedImage?this.uploadedImage.base64:this.data.publicationLogo.toString().split(',')[1])
+    }
+    this.publicationsService.editPublication(postObject).subscribe((res:IApiResponse)=>{
+      if(res.result)
+      {
+      this.publicationsActionModalRef.close(res);
+      }
+      else
+      {
+        let dialogRef=this.dialog.open(ErrorAlertComponent,{
+          width:'350px',
+          height:'125px',
+          data:{
+            text: res.message
+          }
+        })
+      }
+    })
   }
 }

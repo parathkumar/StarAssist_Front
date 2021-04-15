@@ -8,10 +8,10 @@
                         {{publication.publicationName}}
                     </mat-card-content>
                     <mat-card-actions>
-                        <button mat-icon-button aria-label="edit" matTooltip="Edit">
+                        <button mat-icon-button (click)="onEdit(publication)" aria-label="edit" matTooltip="Edit">
                             <mat-icon color="primary">edit</mat-icon>
                         </button>
-                        <button mat-icon-button aria-label="delete" matTooltip="Delete">
+                        <button mat-icon-button  (click)="onDelete(publication)" aria-label="delete" matTooltip="Delete">
                             <mat-icon color="warn">delete</mat-icon>
                         </button>
                     </mat-card-actions>

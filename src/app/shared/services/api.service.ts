@@ -20,7 +20,6 @@ export class ApiService {
     return this.http.put(this.base_api+targetpath,postObj);
   }
   deleteData(targetPath:string,id:any):Observable<any>{
-    debugger;
     return this.http.delete(this.base_api+targetPath+"?id="+id);
   }
 }
