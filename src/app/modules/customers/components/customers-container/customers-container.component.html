@@ -4,10 +4,18 @@
   </div>
   <div class="section-body">
     <form class="flex-test">
-      <mat-form-field>
-        <mat-label>Search Customers</mat-label>
-        <input matInput (keyup)="applyFilter($event)">
-      </mat-form-field>
+      <div>
+        <mat-form-field>
+          <mat-label>Field</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let column of columnMap" value="column.objName" (click)="changeFilterColumn(column)">{{ column.displayText }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Search Customers</mat-label>
+          <input matInput (keyup)="applyFilter($event)">
+        </mat-form-field>        
+      </div>
       <button mat-mini-fab color="primary" type="button" matTooltip="New customer" (click)='onAddCustomer()'>
         <mat-icon>add</mat-icon>
       </button>
@@ -45,7 +53,6 @@
               <mat-icon color="warn">delete</mat-icon>
             </button>
           </td>
-
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

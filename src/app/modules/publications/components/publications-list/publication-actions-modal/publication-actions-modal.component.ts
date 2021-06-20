@@ -110,4 +110,12 @@ data:IPublication=null;
       }
     })
   }
+  getImage(){
+    //console.log(this.uploadedImage?this.uploadedImage.base64:this.data.publicationLogo.toString().split(',')[1])
+    return this.uploadedImage?this.uploadedImage?.base64:this.data?.publicationLogo?.toString().split(',')[1];
+  }
+  getImageType(){
+    //console.log(this.uploadedImage?this.uploadedImage?.type:this.data?.publicationLogo?.toString().split(',')[0])
+    return this.uploadedImage?this.uploadedImage?.type:this.data?.publicationLogo?.toString().split(',')[0];
+  }
 }

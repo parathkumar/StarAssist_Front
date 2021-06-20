@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ReleaseOrderContainerComponent } from './release-order-container/release-order-container.component';
+import { ReleaseOrderContainerComponent } from './components/release-order-container/release-order-container.component';
 
 
 const routes: Routes = [
