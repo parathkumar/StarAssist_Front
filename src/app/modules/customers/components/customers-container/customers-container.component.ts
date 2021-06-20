@@ -23,14 +23,40 @@ export class CustomersContainerComponent implements OnInit{
     this.getCustomersList()
   }
   displayedColumns: string[] = ['Name','Email','Phone Number','Landmark','Actions'];
+  columnMap:any[] = [
+    {
+      displayText:'Name',
+      objName:'name'
+    },
+    {
+      displayText:'Email',
+      objName:'email'
+    },
+    {
+      displayText:'Phone Number',
+      objName:'phoneNumbers'
+    },
+    {
+      displayText:'Landmark',
+      objName:'businessLandmark'
+    },
+  ];
   dataSource:MatTableDataSource<Icustomer>;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  
+  get Columns(){
+    return Object.values(this.columnMap)
+  }
+  changeFilterColumn(column){
+    this.dataSource.filterPredicate = (data: Icustomer, filter: string) => {
+      return data[column.objName].trim().toLowerCase().indexOf(filter) != -1
+    };
+  }
   applyFilter(event){
-    console.log(event.target.value)
+    //console.log(event.target.value)
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+  
 
   onAddCustomer(){
     let dialogRef = this.dialog.open(CustomerActionsModalComponent,{

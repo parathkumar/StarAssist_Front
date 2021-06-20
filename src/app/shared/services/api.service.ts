@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 export class ApiService {
 
   constructor(private http:HttpClient) {}
-  // private base_api = 'http://127.0.0.1:8000/'
   private base_api = 'https://localhost:44395/api/';
   getData(targetPath:string):Observable<any>{
     return this.http.get(this.base_api+targetPath);
@@ -20,7 +19,6 @@ export class ApiService {
     return this.http.put(this.base_api+targetpath,postObj);
   }
   deleteData(targetPath:string,id:any):Observable<any>{
-    debugger;
     return this.http.delete(this.base_api+targetPath+"?id="+id);
   }
 }

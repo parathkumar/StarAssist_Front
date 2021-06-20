@@ -8,11 +8,13 @@
     <mat-icon>close</mat-icon>
   </button>
 </div>
-<div mat-dialog-content>
+<div mat-dialog-content >
   <div>
     <app-image-upload
       [id]="1"
       (complete)="onImageUpload($event)"
+      [inputImageSrc]="getImage()"
+      [inputImageType]="getImageType()"
     ></app-image-upload>
   </div>
 
@@ -22,7 +24,7 @@
         <div class="grid-item">
           <mat-form-field>
             <mat-label>Publication Name</mat-label>
-            <input cdkFocusInitial matInput formControlName="Name" />
+            <input cdkFocusInitial matInput formControlName="name" />
           </mat-form-field>
         </div>
       </div>

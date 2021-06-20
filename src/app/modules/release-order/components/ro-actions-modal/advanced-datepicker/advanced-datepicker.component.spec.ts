@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ImageUploadComponent } from './image-upload.component';
+import { AdvancedDatepickerComponent } from './advanced-datepicker.component';
 
-describe('ImageUploadComponent', () => {
-  let component: ImageUploadComponent;
-  let fixture: ComponentFixture<ImageUploadComponent>;
+describe('AdvancedDatepickerComponent', () => {
+  let component: AdvancedDatepickerComponent;
+  let fixture: ComponentFixture<AdvancedDatepickerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImageUploadComponent ]
+      declarations: [ AdvancedDatepickerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ImageUploadComponent);
+    fixture = TestBed.createComponent(AdvancedDatepickerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

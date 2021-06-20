@@ -40,7 +40,8 @@ export class ImageUploadComponent implements OnInit {
       @Input('inputImageSrc')
       set _inputImageSrc(value: any) {
             this.inputImageSrc = value;
-            this.bindImage();
+            //this.bindImage();
+            console.log('in bindimg')
       }
 
       get _inputImageType(): any {
@@ -49,7 +50,7 @@ export class ImageUploadComponent implements OnInit {
       @Input('inputImageType')
       set _inputImageType(value: any) {
             this.inputImageType = value;
-            this.bindImage();
+            //this.bindImage();
       }
 
       constructor(private sanitizer: DomSanitizer) { }
@@ -60,18 +61,18 @@ export class ImageUploadComponent implements OnInit {
 
       private bindImage() {
             this.fileUploadModel = { type: null, base64: null };
+            console.log('type',this.inputImageType)
             if (this.inputImageSrc && this.inputImageType) {
                   this.inputImageSrc = "data:image/" + this.inputImageType + ";base64," + this.inputImageSrc;
                   this.imageSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.inputImageSrc);
+                  
             }
       }
       handleDragEnter() {
-            console.log("handleDragEnter")
             this.dragging = true;
       }
 
       handleDragLeave() {
-            console.log("handleDragLeave")
             this.dragging = false;
       }
 
@@ -91,7 +92,6 @@ export class ImageUploadComponent implements OnInit {
       }
 
       handleInputChange(e) {
-            console.log("input change")
             var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
 
             var pattern = /image-*/;
@@ -108,7 +108,6 @@ export class ImageUploadComponent implements OnInit {
       }
 
       _handleReaderLoaded(e) {
-            console.log("_handleReaderLoaded")
             var reader = e.target;
             this.imageSrc = this.sanitizer.bypassSecurityTrustResourceUrl(reader.result);
             this.fileUploadModel.base64 = reader.result;

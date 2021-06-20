@@ -1,0 +1,67 @@
+<div class="section-container">
+    <div class="section-top">
+        <div>
+            <h1 class="section-heading">Release Order</h1>
+        </div>
+    </div>
+    <div class="section-body"> 
+        <form class="flex-test">
+            <mat-form-field>
+              <mat-label>Search RO</mat-label>
+              <input matInput (keyup)="applyFilter($event)">
+            </mat-form-field>
+            <button mat-mini-fab color="primary" type="button" matTooltip="New RO" (click)='onAddRO()'>
+              <mat-icon>add</mat-icon>
+            </button>
+          </form>
+          <div class="table-container">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table-fit">
+      
+              <ng-container matColumnDef="roNumber">
+                <th mat-header-cell *matHeaderCellDef> RO No. </th>
+                <td mat-cell *matCellDef="let element"> {{element.roNumber}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="customer">
+                <th mat-header-cell *matHeaderCellDef> Customer </th>
+                <td mat-cell *matCellDef="let element"> {{element.customer}} </td>
+              </ng-container>
+      
+              <ng-container matColumnDef="publication">
+                <th mat-header-cell *matHeaderCellDef> Publication </th>
+                <td mat-cell *matCellDef="let element"> {{element.publication}} </td>
+              </ng-container>
+      
+              <ng-container matColumnDef="region">
+                <th mat-header-cell *matHeaderCellDef> Region </th>
+                <td mat-cell *matCellDef="let element"> {{element.region}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="Actions">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Actions </th>
+                <td mat-cell *matCellDef="let element" style="justify-content: center;" class="Actions">
+                  <button mat-button href="#" aria-label="print" matTooltip="print" (click)="onPrintRO(element)">
+                    <mat-icon color="primary">print</mat-icon>
+                  </button>
+                  <button mat-button href="#" aria-label="mail" matTooltip="mail" (click)="onMailRO(element)">
+                    <mat-icon color="primary">mail</mat-icon>
+                  </button>
+                  <button mat-button href="#" aria-label="edit" matTooltip="Edit" (click)="onEditRO(element)">
+                    <mat-icon color="primary">edit</mat-icon>
+                  </button>
+                  <button mat-button href="#" aria-label="delete" matTooltip="Delete" (click)="onDelete(element)">
+                    <mat-icon color="warn">delete</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the search </td>
+              </tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+          </div>             
+    </div>
+</div>

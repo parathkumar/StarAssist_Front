@@ -1,0 +1,37 @@
+.add-bar{
+    position: sticky;
+    top:0;
+    z-index: 10;
+    background-color:rgba(255, 255, 255, 0.966);
+}
+.FieldStyle{
+    padding:1%;
+    opacity: 1;
+    width: 50%;    
+}
+.buttonsize{
+    width:20%;
+}
+.button-with-title{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+mat-list{button{
+    display: none;
+  }
+} 
+mat-list-item:hover button{
+    display: block;
+  }
+.Action{
+    display:flex;
+    flex-direction: row;
+}
+.list-style{
+    display:flex;
+    flex-direction: row;
+}
+.spacer{
+    flex: 1 1 auto;
+}

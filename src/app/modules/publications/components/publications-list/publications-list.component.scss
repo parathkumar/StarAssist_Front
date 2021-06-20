@@ -7,10 +7,33 @@
     flex-direction: row;
     flex-wrap: wrap;
     overflow-y:auto; 
-    position:relative;
-    height: 400px;
+    //position:relative;
+    height: 99%;
 }
 
+.wrapper{
+  display: flex; /* relevant part */
+  flex-direction: column; /* relevant part */
+  overflow: hidden; /* relevant part */
+  height:500px//calc(100% - 10px);
+}
+.testscr{
+  height: 100%; /* relevant part */
+  overflow-y: auto; 
+}
 .card-list-styling{
     list-style: none;
 }
+
+.scroll::-webkit-scrollbar {
+    width: 5px;
+  }
+
+.scroll::-webkit-scrollbar-track {
+    background: #ddd;
+  }
+   
+.scroll::-webkit-scrollbar-thumb {
+    background: #666; 
+  }
+
