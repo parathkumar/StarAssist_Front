@@ -1,9 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { forkJoin, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Icustomer } from 'src/app/modules/customers/interfaces/customers';
+import { forkJoin } from 'rxjs';
 import { CustomersService } from 'src/app/modules/customers/services/customers.service';
 import { PublicationsService } from 'src/app/modules/publications/services/publications.service';
 import { RegionsService } from 'src/app/modules/publications/services/regions.service';
@@ -68,8 +66,8 @@ export class RoActionsModalComponent implements OnInit {
   }
   OpenAdvancedDatePicker(){
     this.dialog.open(AdvancedDatepickerComponent,{
-      width:'800px',
-      height:'500px',
+      width:'550px',
+      height:'550px',
       data:{}
     })
   }
