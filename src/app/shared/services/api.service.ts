@@ -9,6 +9,7 @@ export class ApiService {
 
   constructor(private http:HttpClient) {}
   //private base_api = 'https://localhost:44395/api/';
+  //test
   private base_api = 'https://starassistdev.azurewebsites.net/api/';
   getData(targetPath:string):Observable<any>{
     return this.http.get(this.base_api+targetPath);
