@@ -40,7 +40,8 @@ export class ImageUploadComponent implements OnInit {
       @Input('inputImageSrc')
       set _inputImageSrc(value: any) {
             this.inputImageSrc = value;
-            this.bindImage();
+            //this.bindImage();
+            console.log('in bindimg')
       }
 
       get _inputImageType(): any {
@@ -49,7 +50,7 @@ export class ImageUploadComponent implements OnInit {
       @Input('inputImageType')
       set _inputImageType(value: any) {
             this.inputImageType = value;
-            this.bindImage();
+            //this.bindImage();
       }
 
       constructor(private sanitizer: DomSanitizer) { }
@@ -60,9 +61,11 @@ export class ImageUploadComponent implements OnInit {
 
       private bindImage() {
             this.fileUploadModel = { type: null, base64: null };
+            console.log('type',this.inputImageType)
             if (this.inputImageSrc && this.inputImageType) {
                   this.inputImageSrc = "data:image/" + this.inputImageType + ";base64," + this.inputImageSrc;
                   this.imageSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.inputImageSrc);
+                  
             }
       }
       handleDragEnter() {

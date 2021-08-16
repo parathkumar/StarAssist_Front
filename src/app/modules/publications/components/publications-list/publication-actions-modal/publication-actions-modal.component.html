@@ -13,6 +13,8 @@
     <app-image-upload
       [id]="1"
       (complete)="onImageUpload($event)"
+      [inputImageSrc]="getImage()"
+      [inputImageType]="getImageType()"
     ></app-image-upload>
   </div>
 

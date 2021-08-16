@@ -1,0 +1,16 @@
+.mat-calendar-body-cell.selected
+{
+  background-color:rgb(73, 167, 255)!important;
+  border-radius: 50%
+}
+.calendar
+{
+  width:15rem;
+  margin-left: 200px;
+}
+.form-buttons{
+    display: flex;
+    flex-direction: row-reverse;
+    align-self: flex-end;
+    margin-top: 4%;
+  }

@@ -43,8 +43,9 @@ export class PublicationsListComponent implements OnInit {
       height:'490px',
       data:{type:actionConstants.edit,data:publication }
 
-    }).afterClosed().subscribe((res)=>{
-      if(res.result)
+    })
+    dialogRef.afterClosed().subscribe((res)=>{
+      if(res?.result)
       {
         let successdialogref=this.dialog.open(SuccessAlertComponent,{
           width:'350px',

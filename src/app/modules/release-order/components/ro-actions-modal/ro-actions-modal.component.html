@@ -1,0 +1,153 @@
+<div mat-dialog-title style="display: flex; justify-content: space-between" class="dialog-header">
+  <h1>{{ modalType }} Release Order</h1>
+  <button mat-icon-button [mat-dialog-close]="" color="warn">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <div class="form-wrapper">
+      <div class="grid-container">
+        <div class="grid-item">
+          <mat-form-field>
+            <mat-label>Customer</mat-label>
+            <mat-select cdkFocusInitial formControlName="customer">
+              <mat-option *ngFor="let cus of customerList" [value]="cus.name">
+                {{cus.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+
+        <div class="grid-item">
+          <mat-form-field>
+            <mat-label>Bill To</mat-label>
+            <mat-select formControlName="billTo">
+              <mat-option *ngFor="let cus of customerList" [value]="cus.name">
+                {{cus.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="grid-item">
+          <mat-form-field>
+            <mat-label>Publication</mat-label>
+            <mat-select formControlName="publication">
+              <mat-option *ngFor="let pub of publicationList" [value]="pub.publicationName">
+                {{pub.publicationName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="grid-item">
+          <mat-form-field>
+            <mat-label>Region</mat-label>
+            <mat-select formControlName="region">
+              <mat-option *ngFor="let reg of regionList" [value]="reg.regionName">
+                {{reg.regionName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="fieldset-wrapper">
+          <fieldset class="grid-item-fieldset">
+            <legend>Size</legend>
+            <mat-form-field>
+              <mat-label>Width</mat-label>
+              <input matInput formControlName="width">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Height</mat-label>
+              <input matInput formControlName="height">
+            </mat-form-field>
+          </fieldset>
+        </div>
+
+        <div class="fieldset-wrapper">
+          <fieldset class="grid-item-fieldset">
+            <legend>Rate</legend>
+            <mat-form-field>
+              <mat-label>Rate</mat-label>
+              <input matInput formControlName="rate">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Rate Per</mat-label>
+              <input matInput formControlName="ratePer">
+            </mat-form-field>
+          </fieldset>
+        </div>
+
+        <div class="grid-item">
+          <mat-form-field>
+            <mat-label>Captions</mat-label>
+            <input matInput formControlName="captions">
+          </mat-form-field>
+        </div>
+
+        <div class="grid-item">
+          <mat-form-field>
+            <mat-label>Position</mat-label>
+            <input matInput formControlName="position">
+          </mat-form-field>
+        </div>
+
+        <div class="grid-item">
+          <mat-form-field>
+            <mat-label>Special Instruction</mat-label>
+            <input matInput formControlName="specialInstruction">
+          </mat-form-field>
+        </div>
+
+        <div class="grid-item">
+          <mat-form-field>
+            <mat-label>Enclosed</mat-label>
+            <input matInput formControlName="enclosed">
+          </mat-form-field>
+        </div>
+
+        <div class="grid-item">
+          <mat-form-field>
+            <mat-label>Remarks</mat-label>
+            <input matInput formControlName="remarks">
+          </mat-form-field>
+        </div>
+        <div class="grid-item">
+          <mat-form-field>
+            <mat-label>Details</mat-label>
+            <input matInput formControlName="details">
+          </mat-form-field>
+        </div>
+
+
+
+        <div class="grid-item-date blue-border-box" *ngIf="selectedDates.length <= 1">
+          <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" disabled>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker disabled="false"></mat-datepicker>
+          </mat-form-field>
+          <button mat-raised-button type="button" color="primary" (click)="OpenAdvancedDatePicker()">Advanced</button>
+        </div>
+
+        <div class="grid-item-date blue-border-box" *ngIf="selectedDates.length > 1">
+            <mat-chip-list #chipList aria-label="date selection" style="max-height: 90px; max-width: 360px;  overflow-y: scroll; overflow-x: hidden;">
+              <mat-chip *ngFor="let date of selectedDates">{{date}} </mat-chip>
+            </mat-chip-list>
+            <button mat-raised-button type="button" color="primary" (click)="OpenAdvancedDatePicker()">Advanced</button>
+        </div>
+
+      </div>
+
+      <div class="form-buttons">
+        <button mat-raised-button type="submit" [disabled]="!form.valid" color="primary"
+          style="margin-left: 10px;">Submit</button>
+        <button mat-button color="warn" type="reset">Reset</button>
+      </div>
+    </div>
+  </form>
+</div>

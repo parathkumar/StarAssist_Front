@@ -47,6 +47,12 @@ body {
     display: flex;
     flex-direction: row;
   }
+
+  .blue-border-box{
+    border-left: 6px solid #ccc;
+    background-color: #ddffff;
+    border-color: #2196F3;
+  }
   body{
     background-color: $theme-light-blue;
   }

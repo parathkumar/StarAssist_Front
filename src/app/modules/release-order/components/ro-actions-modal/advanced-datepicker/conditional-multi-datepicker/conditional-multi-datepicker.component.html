@@ -1,0 +1,65 @@
+<mat-horizontal-stepper [linear]="true" #stepper id="stepper">
+    <mat-step [stepControl]="DateRangeFormGroup" label="Select Date Range">
+        <form [formGroup]="DateRangeFormGroup">
+            <div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter a date range</mat-label>
+                        <mat-date-range-input [formGroup]="DateRangeFormGroup" [rangePicker]="picker">
+                            <input matStartDate formControlName="start" placeholder="Start date">
+                            <input matEndDate formControlName="end" placeholder="End date">
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker></mat-date-range-picker>
+        
+                        <mat-error *ngIf="DateRangeFormGroup.controls.start.hasError('matStartDateInvalid')">Invalid start date
+                        </mat-error>
+                        <mat-error *ngIf="DateRangeFormGroup.controls.end.hasError('matEndDateInvalid')">Invalid end date
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <button mat-raised-button matStepperNext color="primary" (click)="DateRangeCompleted()">Next</button>
+                </div>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="logicFormGroup" [optional]="true" label="Add Logic">
+        <form [formGroup]="logicFormGroup">
+            <mat-form-field appearance="fill">
+                <mat-label>Type</mat-label>
+                <mat-select formControlName="type">
+                    <mat-option *ngFor="let type of types"  [value]="type">
+                     {{type}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Day</mat-label>
+                <mat-select formControlName="day">
+                    <mat-option *ngFor="let day of daysOfWeek"  [value]="day">
+                      {{day}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="form-buttons">
+                <button mat-raised-button matStepperNext color="primary" (click)="LogicAdded()"  style="margin-left: 10px;">Add</button>
+                <button mat-raised-button matStepperNext color="warn" type="reset">Remove Logic</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step label="Done">
+        <p>Days selected are {{logicFormGroup.value.type}} {{logicFormGroup.value.day}} from {{DateRangeFormGroup.value.start | date:'dd MMM yyyy'}} to {{DateRangeFormGroup.value.end | date:'dd MMM yyyy'}}.</p>
+        <!-- <div> -->
+            <!-- <div (click)="$event.stopPropagation()" class="calendar">
+                <mat-calendar #calendar (selectedChange)="select($event,calendar)" [dateClass]="isSelected"></mat-calendar>
+            </div> -->
+            <div class="form-buttons">
+                <button mat-button matStepperPrevious style="margin-left: 10px;">Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+                <button mat-button (click)="saveSelectedDates()">Save</button>
+            </div>
+        <!-- </div> -->
+        
+    </mat-step>
+</mat-horizontal-stepper>
