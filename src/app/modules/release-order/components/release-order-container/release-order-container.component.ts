@@ -31,7 +31,7 @@ export class ReleaseOrderContainerComponent implements OnInit {
   onAddRO(){
     let dialogRef = this.dialog.open(RoActionsModalComponent,{
       width:'1700px',
-      height:'500px',
+      height:'550px',
       data:{type:actionConstants.create,data:{}}
     })
     dialogRef.afterClosed().subscribe(res=>{

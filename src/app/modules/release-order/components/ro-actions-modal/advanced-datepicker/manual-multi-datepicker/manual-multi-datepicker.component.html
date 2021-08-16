@@ -1,0 +1,7 @@
+<div (click)="$event.stopPropagation()" class="calendar">
+    <mat-calendar #calendar (selectedChange)="select($event,calendar)" [dateClass]="isSelected"></mat-calendar>
+</div>
+<div class="form-buttons">
+    <button mat-raised-button color="primary" (click)="saveSelectedDates()">Save</button>
+    <button mat-button color="warn" type="reset" (click)="resetSelected(calendar)">Reset</button>
+</div>

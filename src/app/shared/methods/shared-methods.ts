@@ -36,5 +36,12 @@ export class customMethods {
   public static isEmpty(object) {
     return [null,undefined,''].some((rec)=>rec==object)
   }
+  /** Returns Difference of days between two dates
+  * @param {Date} startDate - start date
+  * @param {Date} endDate - end date
+  */
+   public static calculateDiff(startDate:Date,endDate:Date){
+    return Math.floor((Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate()) - Date.UTC(endDate.getFullYear(), endDate.getMonth(), endDate.getDate()) ) /(1000 * 60 * 60 * 24));
+  }
 
 }

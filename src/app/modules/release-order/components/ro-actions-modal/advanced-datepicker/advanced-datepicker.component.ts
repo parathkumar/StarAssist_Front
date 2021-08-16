@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+import { AdvancedDatepickerService } from '../../../services/advanced-datepicker.service';
 
 @Component({
   selector: 'app-advanced-datepicker',
@@ -8,17 +9,12 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class AdvancedDatepickerComponent implements OnInit {
 
-  constructor(private _formBuilder: FormBuilder) { }
-  DateRangeFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  ngOnInit(): void {
-    this.DateRangeFormGroup = this._formBuilder.group({
-      start: new FormControl(),
-      end: new FormControl()
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
-  }
+  dateRangeSelected:string[];
+  constructor(public dialogRef: MatDialogRef<AdvancedDatepickerComponent>,private selectedDatesService:AdvancedDatepickerService) {}
 
+  ngOnInit(): void {
+  }
+  close(){
+    this.dialogRef.close('close');
+  }
 }

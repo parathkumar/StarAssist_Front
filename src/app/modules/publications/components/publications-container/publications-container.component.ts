@@ -22,7 +22,7 @@ export class PublicationsContainerComponent implements OnInit {
   openAddPublicationsModal(){
         let dialogRef = this.dialog.open(PublicationActionsModalComponent,{
           width:'750px',
-          height:'490px',
+          height:'500px',
           data:{type:actionConstants.create,data:{}}
         })
         dialogRef.afterClosed().subscribe(res=>{

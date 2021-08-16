@@ -6,6 +6,7 @@ import { CustomersService } from 'src/app/modules/customers/services/customers.s
 import { PublicationsService } from 'src/app/modules/publications/services/publications.service';
 import { RegionsService } from 'src/app/modules/publications/services/regions.service';
 import { IReleaseOrder } from '../../interfaces/IReleaseOrder';
+import { AdvancedDatepickerService } from '../../services/advanced-datepicker.service';
 import { ReleaseOrderService } from '../../services/release-order.service';
 import { AdvancedDatepickerComponent } from './advanced-datepicker/advanced-datepicker.component';
 
@@ -22,7 +23,8 @@ export class RoActionsModalComponent implements OnInit {
   customerList:any;
   publicationList:any;
   regionList:any;
-  constructor(private formBuilder : FormBuilder,@Inject(MAT_DIALOG_DATA) data,private releaseOrderService:ReleaseOrderService,private dialog:MatDialog,private roActionsModalRef:MatDialogRef<RoActionsModalComponent>,private customerService:CustomersService,private publicationService:PublicationsService,private regionService:RegionsService) { 
+  selectedDates:any[] = [];
+  constructor(private formBuilder : FormBuilder,@Inject(MAT_DIALOG_DATA) data,private releaseOrderService:ReleaseOrderService,private dialog:MatDialog,private roActionsModalRef:MatDialogRef<RoActionsModalComponent>,private customerService:CustomersService,private publicationService:PublicationsService,private regionService:RegionsService,private selectedDatesService:AdvancedDatepickerService) { 
     this.modalType=data.type;
     this.roFormValues=data.data;
     console.log('data',this.roFormValues);
@@ -49,6 +51,7 @@ export class RoActionsModalComponent implements OnInit {
       remarks:[this.roFormValues.remarks,Validators.required],
       details:[this.roFormValues.details,Validators.required],
       insertionDates:[new Date(),Validators.required],
+      selectedDates:[''],
     })
   }
 
@@ -65,13 +68,28 @@ export class RoActionsModalComponent implements OnInit {
     });
   }
   OpenAdvancedDatePicker(){
-    this.dialog.open(AdvancedDatepickerComponent,{
-      width:'550px',
-      height:'550px',
+    let dialogRef = this.dialog.open(AdvancedDatepickerComponent,{
+      width:'800px',
+      height:'600px',
       data:{}
     })
+    this.selectedDatesService.setSeletedDates(this.selectedDates);
+    dialogRef.afterClosed().subscribe((res)=>{
+      //this.selectedDates = (res??[]).slice();
+      if(res=='save'){
+        this.selectedDatesService.selectedDates.subscribe(resp=>this.selectedDates = (resp??[]).slice())
+      }
+      console.log(this.selectedDates)
+    })
+  }
+  remove(date){
+    const index = this.selectedDates.indexOf(date);
+
+    if (index >= 0) {
+      this.selectedDates.splice(index, 1);
+    }
   }
   onSubmit(value){
-
+    console.log(value)
   }
 }
