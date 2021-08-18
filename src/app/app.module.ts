@@ -47,7 +47,7 @@ import { AuthGuard } from './core/auth/guards/auth.guard';
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ["localhost:44395"],
+        allowedDomains: ["starassistdev.azurewebsites.net"],
         disallowedRoutes: [],
       },
     }),
